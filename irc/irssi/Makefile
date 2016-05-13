@@ -2,7 +2,7 @@
 
 PORTNAME=	irssi
 PORTVERSION=	0.8.19
-PORTREVISION?=	0
+PORTREVISION?=	1
 CATEGORIES?=	irc
 MASTER_SITES=	https://github.com/irssi/irssi/releases/download/${PORTVERSION}/
 

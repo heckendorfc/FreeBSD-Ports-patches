@@ -12,3 +12,17 @@
  			break;
  		case 15:
  			/* remove all styling */
+--- src/fe-common/core/formats.c
++++ src/fe-common/core/formats.c
+@@ -1357,9 +1357,11 @@ void format_send_to_gui(TEXT_DEST_REC *dest, const char *text)
+ 			ptr++;
+ 			break;
+ 		case 6:
++#if 0
+ 			/* blink */
+ 			if (!hide_text_style)
+ 				flags ^= GUI_PRINT_FLAG_BLINK;
++#endif
+ 			break;
+ 		case 15:
+ 			/* remove all styling */
