@@ -4,9 +4,7 @@ PORTNAME=	ghostscript
 PORTVERSION=	9.16
 PORTREVISION=	5
 CATEGORIES=	print
-MASTER_SITES=	http://downloads.ghostscript.com/public/:gs_srcs \
-		SF/ghostscript/GPL%20Ghostscript/${PORTVERSION}:gs_srcs \
-		ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/GPL/gs${PORTVERSION:S/.//}/:gs_srcs \
+MASTER_SITES=	http://downloads.ghostscript.com/public/old-gs-releases/:gs_srcs \
 		http://www.humblesoft.com/pub/:epag
 PKGNAMESUFFIX=	9-agpl-base
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:gs_srcs ${EPAG_SRCS}:epag
