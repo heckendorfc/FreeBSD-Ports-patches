@@ -2,7 +2,7 @@
 
 PORTNAME=	ghostscript
 PORTVERSION=	9.16
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	print
 MASTER_SITES=	http://downloads.ghostscript.com/public/old-gs-releases/:gs_srcs \
 		http://www.humblesoft.com/pub/:epag
