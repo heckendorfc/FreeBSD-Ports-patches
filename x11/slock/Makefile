@@ -3,6 +3,7 @@
 
 PORTNAME=	slock
 PORTVERSION=	1.3
+PORTREVISION=	1
 CATEGORIES=	x11
 MASTER_SITES=	http://dl.suckless.org/tools/
 
@@ -23,5 +24,6 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|-I/usr/include||;s|-L/usr/lib||;s|= -Os|+=|'\
 		-e 's|-DHAVE_SHADOW_H|-DHAVE_PAM|' -e '/^LDFLAGS/s|$$| -lpam|' \
 		${WRKSRC}/config.mk
+	@${REINPLACE_CMD} -e 's|CC3333|002250|' ${WRKSRC}/config.def.h
 
 .include <bsd.port.mk>
