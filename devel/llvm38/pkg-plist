@@ -2206,6 +2206,7 @@ llvm38/lib/libLTO.so
 %%LLDB%%llvm38/lib/liblldbTarget.a
 %%LLDB%%llvm38/lib/liblldbUtility.a
 %%OPENMP%%llvm38/lib/libomp.so
+%%OPENMP%%llvm38/lib/libomp.so.3
 %%LLDB%%llvm38/lib/python2.7/site-packages/lldb/__init__.py
 %%LLDB%%llvm38/lib/python2.7/site-packages/lldb/_lldb.so
 %%LLDB%%llvm38/lib/python2.7/site-packages/lldb/embedded_interpreter.py

@@ -2,7 +2,7 @@
 
 PORTNAME=	llvm
 DISTVERSION=	3.8.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	devel lang
 MASTER_SITES=	http://llvm.org/${PRE_}releases/${LLVM_RELEASE}/${RCDIR}
 DISTNAME=	${PORTNAME}-${DISTVERSION}.src
@@ -344,6 +344,10 @@ post-install-CLANG-on:
 post-install-COMPILER_RT-on:
 	cd ${WRKDIR}/compiler-rt-build && \
 	${MAKE_ENV} ${MAKE_CMD} ${INSTALL_TARGET}
+
+post-install-OPENMP-on:
+	cd ${STAGEDIR}${LLVM_PREFIX}/lib && \
+	${LN} -fs libomp.so ${STAGEDIR}${LLVM_PREFIX}/lib/libomp.so.3
 
 post-install-LIT-on:
 	${INSTALL_SCRIPT} ${PATCH_WRKSRC}/utils/lit/lit.py \
