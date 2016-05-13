@@ -3,7 +3,7 @@
 
 PORTNAME=	python34
 PORTVERSION=	${PYTHON_PORTVERSION}
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	lang python ipv6
 MASTER_SITES=	PYTHON/ftp/python/${PORTVERSION}
 DISTNAME=	Python-${PORTVERSION}
@@ -108,6 +108,12 @@ BROKEN=	You must use libffi from ports on i386. Enable the LIBFFI option
 .if ${ARCH} == sparc64
 CFLAGS+=	-DPYTHON_DEFAULT_RECURSION_LIMIT=900
 .endif
+
+### Fix build with LibreSSL (does not have RAND_egd)
+.if !EMPTY(WITH_OPENSSL_PORT)
+CONFIGURE_ARGS+=       CPPFLAGS=-I/usr/local/include LDFLAGS=-L/usr/local/lib
+.endif
+### End
 
 # See http://bugs.freebsd.org/115940 and http://bugs.freebsd.org/193650
 .if !exists(/usr/bin/ypcat) || defined(WITHOUT_NIS)
