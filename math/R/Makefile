@@ -3,7 +3,7 @@
 
 PORTNAME?=	R
 PORTVERSION=	3.2.2
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	math lang
 MASTER_SITES=	http://cran.r-project.org/%SUBDIR%/ \
 		ftp://cran.r-project.org/pub/R/%SUBDIR%/ \
@@ -26,6 +26,8 @@ MAINTAINER=	bf@FreeBSD.org
 COMMENT?=	Language for statistical computing and graphics
 
 LICENSE=	GPLv2
+
+LIB_DEPENDS=		libcurl.so:${PORTSDIR}/ftp/curl
 
 BUILD_DEPENDS=		${LOCALBASE}/bin/gsed:textproc/gsed \
 			texi2dvi:print/texinfo
