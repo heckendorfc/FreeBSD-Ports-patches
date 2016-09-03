@@ -30,13 +30,14 @@ INSTALLS_ICONS=	yes
 OPTIONS_SUB=	yes
 INSTALL_TARGET=	install-strip
 CONFIGURE_ARGS=	--disable-tests --with-html-dir=${PREFIX}/share/doc
+CONFIGURE_ARGS+=	--disable-emoji-dict
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 
-OPTIONS_DEFINE=	NLS GTK2 GTK3 VALA GINTRO PYTHON_LIB DOCS XIM ENGINE EMOJI
+OPTIONS_DEFINE=	NLS GTK2 GTK3 VALA GINTRO PYTHON_LIB DOCS XIM ENGINE
 OPTIONS_RADIO=	CONFIG
 OPTIONS_RADIO_CONFIG=	GCONF DCONF
-OPTIONS_DEFAULT=	GTK2 GTK3 VALA GINTRO PYTHON_LIB DCONF XIM ENGINE EMOJI
+OPTIONS_DEFAULT=	GTK2 GTK3 VALA GINTRO PYTHON_LIB DCONF XIM ENGINE
 
 GTK2_DESC=	Install GTK2 client
 GTK3_DESC=	Install GTK3 client and panel
@@ -47,7 +48,6 @@ GCONF_DESC=	Use GConf for configuration
 DCONF_DESC=	Use dconf for configuration
 XIM_DESC=	Install XIM server
 ENGINE_DESC=	Install ibus simple engine
-EMOJI_DESC=	Emoji characters
 CPE_VENDOR=	ibus_project
 
 NLS_USES=		gettext
@@ -84,10 +84,6 @@ DOCS_CONFIGURE_ENABLE=	gtk-doc-html
 XIM_CONFIGURE_ENABLE=	xim
 
 ENGINE_CONFIGURE_ENABLE=	engine
-
-EMOJI_LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \
-			libxml2.so:textproc/libxml2
-EMOJI_CONFIGURE_ENABLE=	emoji-dict
 
 .include <bsd.port.options.mk>
 
