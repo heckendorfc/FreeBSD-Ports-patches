@@ -51,7 +51,7 @@ include/ibus-1.0/ibusenginesimple.h
 %%GTK3%%lib/gtk-3.0/3.0.0/immodules/im-ibus.so
 lib/libibus-1.0.so
 lib/libibus-1.0.so.5
-lib/libibus-1.0.so.5.0.511
+lib/libibus-1.0.so.5.0.514
 %%PYTHON_LIB%%%%PYTHON_SITELIBDIR%%/ibus/__init__.py
 %%PYTHON_LIB%%%%PYTHON_SITELIBDIR%%/ibus/__init__.pyc
 %%PYTHON_LIB%%%%PYTHON_SITELIBDIR%%/ibus/__init__.pyo
@@ -256,6 +256,7 @@ share/applications/ibus-setup.desktop
 %%DATADIR%%/setup/main.pyc
 %%DATADIR%%/setup/main.pyo
 %%DATADIR%%/setup/setup.ui
+share/dbus-1/services/org.freedesktop.IBus.service
 share/icons/hicolor/16x16/apps/ibus-keyboard.png
 share/icons/hicolor/22x22/apps/ibus-keyboard.png
 share/icons/hicolor/24x24/apps/ibus-keyboard.png
