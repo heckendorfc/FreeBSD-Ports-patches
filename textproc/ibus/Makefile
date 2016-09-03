@@ -86,7 +86,7 @@ XIM_CONFIGURE_ENABLE=	xim
 ENGINE_CONFIGURE_ENABLE=	engine
 
 EMOJI_LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \
-			ibxml2.so:textproc/libxml2
+			libxml2.so:textproc/libxml2
 EMOJI_CONFIGURE_ENABLE=	emoji-dict
 
 .include <bsd.port.options.mk>
