@@ -20,10 +20,14 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>=0.83.0:devel/py-dbus \
 		${PYTHON_SITELIBDIR}/xdg/__init__.py:devel/py-xdg \
 		${LOCALBASE}/share/xml/iso-codes/iso_639.xml:misc/iso-codes \
 		setxkbmap:x11/setxkbmap
-LIB_DEPENDS=	libdbus-glib-1.so:devel/dbus-glib
+LIB_DEPENDS=	libdbus-glib-1.so:devel/dbus-glib \
+		libfontconfig.so:x11-fonts/fontconfig \
+		libfreetype.so:print/freetype2 \
+		libdbus-1.so:devel/dbus
 
-USES=		compiler cpe gmake libtool pathfix pkgconfig python:2
-USE_GNOME=	glib20 intltool librsvg2 pygobject3
+USES=		compiler cpe gmake libtool pathfix pkgconfig python:2 gettext-runtime
+USE_GNOME=	glib20 intltool librsvg2 pygobject3 cairo
+USE_XORG=	xi
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes

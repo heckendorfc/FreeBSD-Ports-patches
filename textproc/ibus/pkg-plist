@@ -213,7 +213,6 @@ share/applications/ibus-setup.desktop
 %%PORTDOCS%%%%DOCSDIR%%/api-index-full.html
 %%PORTDOCS%%%%DOCSDIR%%/ibus.devhelp2
 %%PORTDOCS%%%%DOCSDIR%%/index.html
-%%PORTDOCS%%%%DOCSDIR%%/index.sgml
 %%PORTDOCS%%%%DOCSDIR%%/left.png
 %%PORTDOCS%%%%DOCSDIR%%/right.png
 %%PORTDOCS%%%%DOCSDIR%%/style.css
