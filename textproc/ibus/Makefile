@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ibus
-PORTVERSION=	1.5.11
+PORTVERSION=	1.5.14
 CATEGORIES=	textproc
 MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${PORTVERSION}/ \
 		http://github.com/${PORTNAME}/${PORTNAME}/releases/download/${PORTVERSION}/
@@ -33,10 +33,10 @@ CONFIGURE_ARGS=	--disable-tests --with-html-dir=${PREFIX}/share/doc
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 
-OPTIONS_DEFINE=	NLS GTK2 GTK3 VALA GINTRO PYTHON_LIB DOCS XIM ENGINE
+OPTIONS_DEFINE=	NLS GTK2 GTK3 VALA GINTRO PYTHON_LIB DOCS XIM ENGINE EMOJI
 OPTIONS_RADIO=	CONFIG
 OPTIONS_RADIO_CONFIG=	GCONF DCONF
-OPTIONS_DEFAULT=	GTK2 GTK3 VALA GINTRO PYTHON_LIB DCONF XIM ENGINE
+OPTIONS_DEFAULT=	GTK2 GTK3 VALA GINTRO PYTHON_LIB DCONF XIM ENGINE EMOJI
 
 GTK2_DESC=	Install GTK2 client
 GTK3_DESC=	Install GTK3 client and panel
@@ -47,6 +47,7 @@ GCONF_DESC=	Use GConf for configuration
 DCONF_DESC=	Use dconf for configuration
 XIM_DESC=	Install XIM server
 ENGINE_DESC=	Install ibus simple engine
+EMOJI_DESC=	Emoji characters
 CPE_VENDOR=	ibus_project
 
 NLS_USES=		gettext
@@ -83,6 +84,10 @@ DOCS_CONFIGURE_ENABLE=	gtk-doc-html
 XIM_CONFIGURE_ENABLE=	xim
 
 ENGINE_CONFIGURE_ENABLE=	engine
+
+EMOJI_LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \
+			ibxml2.so:textproc/libxml2
+EMOJI_CONFIGURE_ENABLE=	emoji-dict
 
 .include <bsd.port.options.mk>
 
