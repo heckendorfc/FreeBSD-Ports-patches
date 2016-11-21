@@ -3,7 +3,7 @@
 
 PORTNAME?=	gimp-app
 PORTVERSION=	2.8.18
-PORTREVISION=	1
+PORTREVISION=	2
 PORTEPOCH?=	1
 CATEGORIES?=	graphics gnome
 MASTER_SITES=	GIMP/gimp/v${PORTVERSION:R}
@@ -23,7 +23,6 @@ LIB_DEPENDS=	libpng.so:graphics/png \
 		libbabl-0.1.so:x11/babl \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libdbus-1.so:devel/dbus \
-		libsoup-2.4.so:devel/libsoup \
 		libfreetype.so:print/freetype2
 RUN_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:misc/iso-codes
 
