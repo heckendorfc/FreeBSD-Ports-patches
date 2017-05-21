@@ -1,31 +1,34 @@
-* Make availability of SSLv3 in Qt4 same as in Qt5, i.e. not part of SecureProtocols
-*
+$OpenBSD: patch-src_network_ssl_qsslsocket_openssl_cpp,v 1.4 2016/01/06 17:17:32 zhuk Exp $
+1.  Disable SSLv3 by default.
+2.  TLSv1_*_method() are TLSv1.0-only, so default to SSLv23_*_method(), which is
+    actually TLSv1.* nowadays.
+2a. Make QSsl::TlsV1 also use SSLv23_*_method(), noone in good mind would
+    want to run TLSv1.0-only connections, and too many developers fail
+    same way due to bad naming.
 --- src/network/ssl/qsslsocket_openssl.cpp.orig	2015-05-07 14:14:44 UTC
 +++ src/network/ssl/qsslsocket_openssl.cpp
-@@ -267,9 +267,13 @@ init_context:
+@@ -267,17 +267,19 @@ init_context:
  #endif
          break;
      case QSsl::SslV3:
-+#ifndef OPENSSL_NO_SSL3_METHOD
++#ifndef OPENSSL_NO_SSL3
          ctx = q_SSL_CTX_new(client ? q_SSLv3_client_method() : q_SSLv3_server_method());
 +#else
 +        ctx = 0; // SSL 3 not supported by the system, but chosen deliberately -> error
 +#endif
          break;
 -    case QSsl::SecureProtocols: // SslV2 will be disabled below
-+    case QSsl::SecureProtocols: // SslV2/3 will be disabled below
-     case QSsl::TlsV1SslV3: // SslV2 will be disabled below
+-    case QSsl::TlsV1SslV3: // SslV2 will be disabled below
      case QSsl::AnyProtocol:
++    case QSsl::SecureProtocols:
++    case QSsl::TlsV1SslV3:
++    case QSsl::TlsV1:   // this is TLSv1.0 only case, but misused as TLSv1.x too often
      default:
-@@ -297,8 +301,10 @@ init_context:
- 
-     // Enable bug workarounds.
-     long options;
--    if (configuration.protocol == QSsl::TlsV1SslV3 || configuration.protocol == QSsl::SecureProtocols)
-+    if (configuration.protocol == QSsl::TlsV1SslV3)
-         options = SSL_OP_ALL|SSL_OP_NO_SSLv2;
-+    else if (configuration.protocol == QSsl::SecureProtocols)
-+        options = SSL_OP_ALL|SSL_OP_NO_SSLv2|SSL_OP_NO_SSLv3;
-     else
-         options = SSL_OP_ALL;
- 
+         ctx = q_SSL_CTX_new(client ? q_SSLv23_client_method() : q_SSLv23_server_method());
+         break;
+-    case QSsl::TlsV1:
+-        ctx = q_SSL_CTX_new(client ? q_TLSv1_client_method() : q_TLSv1_server_method());
+-        break;
+     }
+     if (!ctx) {
+         // After stopping Flash 10 the SSL library looses its ciphers. Try re-adding them
