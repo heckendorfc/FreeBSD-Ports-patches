@@ -3,7 +3,7 @@
 
 PORTNAME=	openssh
 DISTVERSION=	7.6p1
-PORTREVISION=	2
+PORTREVISION=	3
 PORTEPOCH=	1
 CATEGORIES=	security ipv6
 MASTER_SITES=	OPENBSD/OpenSSH/portable
@@ -26,9 +26,8 @@ CONFIGURE_ARGS=		--prefix=${PREFIX} --with-md5-passwords \
 
 ETCOLD=			${PREFIX}/etc
 
-BROKEN_SSL=	openssl-devel libressl
+BROKEN_SSL=	openssl-devel
 BROKEN_SSL_REASON_openssl-devel=	incomplete definition of type struct rsa_st
-BROKEN_SSL_REASON_libressl=		random crashes with 7.6 PR 223000
 
 OPTIONS_DEFINE=		PAM TCP_WRAPPERS LIBEDIT BSM \
 			HPN X509 KERB_GSSAPI \
@@ -132,6 +131,10 @@ CONFIGURE_ARGS+=	--disable-utmp --disable-wtmp --disable-wtmpx --without-lastlog
 
 # Keep this last
 EXTRA_PATCHES+=		${FILESDIR}/extra-patch-version-addendum
+
+.if ${PORT_OPTIONS:MLDNS}
+BROKEN=		random crashes with 7.6 PR 223000
+.endif
 
 .if ${PORT_OPTIONS:MX509}
 .  if ${PORT_OPTIONS:MHPN} || ${PORT_OPTIONS:MNONECIPHER}
