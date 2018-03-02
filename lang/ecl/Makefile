@@ -2,10 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	ecl
-PORTVERSION=	15.3.7
-PORTREVISION=	2
+PORTVERSION=	16.1.3
 CATEGORIES=	lang lisp
-MASTER_SITES=	SF/${PORTNAME}s/${PORTNAME}s/15.3/
+MASTER_SITES=	https://gitlab.com/embeddable-common-lisp/ecl/repository/ECL-${PORTVERSION}/
+DISTFILES=	archive.tar.gz
+WRKSRC=		${WRKDIR}/ecl-ECL-16.1.3-4c3dcfdbd52e427910486b2c1f7b6c03a62016e5
 
 MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	ANSI Common Lisp implementation
