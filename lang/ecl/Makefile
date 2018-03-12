@@ -4,9 +4,9 @@
 PORTNAME=	ecl
 PORTVERSION=	16.1.3
 CATEGORIES=	lang lisp
-MASTER_SITES=	https://gitlab.com/embeddable-common-lisp/ecl/repository/ECL-${PORTVERSION}/
-DISTFILES=	archive.tar.gz
-WRKSRC=		${WRKDIR}/ecl-ECL-16.1.3-4c3dcfdbd52e427910486b2c1f7b6c03a62016e5
+#MASTER_SITES=	https://gitlab.com/embeddable-common-lisp/ecl/repository/ECL-${PORTVERSION}/
+#DISTFILES=	archive.tar.gz
+#WRKSRC=		${WRKDIR}/ecl-ECL-16.1.3-4c3dcfdbd52e427910486b2c1f7b6c03a62016e5
 
 MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	ANSI Common Lisp implementation
@@ -17,6 +17,10 @@ LIB_DEPENDS=	libgmp.so:math/gmp
 
 BROKEN_aarch64=		Does not compile: error: unknown type name AO_TS_t
 BROKEN_powerpc64=	Does not link: undefined reference to fmodl
+
+USE_GITLAB=	yes
+GL_ACCOUNT=	embeddable-common-lisp
+GL_COMMIT=	4c3dcfdbd52e427910486b2c1f7b6c03a62016e5
 
 MAKE_JOBS_UNSAFE=	yes
 USES=		gmake perl5 tar:tgz

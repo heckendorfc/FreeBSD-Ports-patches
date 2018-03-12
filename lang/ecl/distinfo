@@ -1,3 +1,3 @@
-TIMESTAMP = 1520003555
-SHA256 (archive.tar.gz) = 92e6fa55981e89bae8b053d9ca8bcae818a79893e002453d65f6063c167c2ff0
-SIZE (archive.tar.gz) = 7464754
+TIMESTAMP = 1520878204
+SHA256 (embeddable-common-lisp-ecl-4c3dcfdbd52e427910486b2c1f7b6c03a62016e5_GL0.tar.gz) = 6d6479a2a3350f5f30845230f28e907d2da422b5c98f3e89c96d001c3e1a27ed
+SIZE (embeddable-common-lisp-ecl-4c3dcfdbd52e427910486b2c1f7b6c03a62016e5_GL0.tar.gz) = 7457900
