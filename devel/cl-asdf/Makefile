@@ -10,6 +10,8 @@ PKGNAMEPREFIX=	cl-
 MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	System definition facility for Common Lisp
 
+LICENSE=	MIT
+
 USES=	gmake
 USE_GITLAB=	yes
 GL_SITE=	https://gitlab.common-lisp.net
